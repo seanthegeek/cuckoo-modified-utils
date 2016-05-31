@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 """Downloads a sample from Palo Alto Network's Wildfire service and sends it to Cuckoo
-C
-opyright 2016 Sean Whalen
+
+Copyright 2016 Sean Whalen
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
