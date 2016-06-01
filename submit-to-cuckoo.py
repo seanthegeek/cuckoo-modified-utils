@@ -35,17 +35,30 @@ cuckoo = Cuckoo("https://cuckoo.example.net", "username", "password")
 
 parser = ArgumentParser(description=__doc__)
 parser.add_argument("sample", nargs="+", help="One or more filenames or globs, or a single URL")
-parser.add_argument("--tor", action="store_true",
-                    help="Enable Tor during analysis")
 parser.add_argument("--tags",
                     help="Comma separated tags for selecting an analysis VM",
                     default=None)
+parser.add_argument("--options",
+                    help="Comma separated option=value pairs",
+                    default=None)
+parser.add_argument("--tor", action="store_true",
+                    help="Enable Tor during analysis")
+parser.add_argument("--procmemdump", action="store_true",
+                    help="Dump and analyze process memory")
 
 args = parser.parse_args()
 
-options = ""
+options = {}
+
 if args.tor:
-    options += "tor=yes"
+    options['tor'] = 'yes'
+if args.procmemdump:
+    options['procmemdump'] = 'yes'
+
+options = ",".join(list(map(lambda option: "{0}={1}".format(option, options[option]), options.keys())))
+
+if args.options:
+    options += args.options
 
 url = len(args.sample) == 1 and args.sample[0].lower().startswith("http")
 if url:

@@ -33,19 +33,36 @@ cuckoo = Cuckoo("https://cuckoo.example.net", "username", "password")
 
 parser = ArgumentParser(description=__doc__)
 parser.add_argument("URL", help="URL of the sample")
-parser.add_argument("--tor", action="store_true",
-                    help="Enable TOR during analysis")
 parser.add_argument("--tags",
                     help="Comma separated tags for selecting an analysis VM",
                     default=None)
+parser.add_argument("--options",
+                    help="Comma separated option=value pairs",
+                    default=None)
+parser.add_argument("--tor", action="store_true",
+                    help="Enable Tor during analysis")
+parser.add_argument("--procmemdump", action="store_true",
+                    help="Dump and analyze process memory")
 parser.add_argument("--user-agent", help="The user agent to spoof",
-                     default="Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/4.0; InfoPath.2; "
-                             ".NET CLR 2.0.50727; WOW64)")
+                    default="Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/4.0; InfoPath.2; "
+                            ".NET CLR 2.0.50727; WOW64)")
+
 args = parser.parse_args()
 
+options = {}
+
+if args.tor:
+    options['tor'] = 'yes'
+if args.procmemdump:
+    options['procmemdump'] = 'yes'
+
+options = ",".join(list(map(lambda option: "{0}={1}".format(option, options[option]), options.keys())))
+
+if args.options:
+    options += args.options
+
 proxies = {"http": "http://localhost:8118",
-           "https": "http://localhost:8118",
-          }
+           "https": "http://localhost:8118"}
 
 headers = {"user-agent": args.user_agent}
 

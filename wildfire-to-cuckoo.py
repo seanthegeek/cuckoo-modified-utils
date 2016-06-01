@@ -36,13 +36,26 @@ parser.add_argument("filename", nargs="?", help="The filename of the sample")
 parser.add_argument("--tags",
                     help="Comma separated tags for selecting an analysis VM",
                     default=None)
+parser.add_argument("--options",
+                    help="Comma separated option=value pairs",
+                    default=None)
 parser.add_argument("--tor", action="store_true",
                      help="Enable Tor during analysis")
+parser.add_argument("--procmemdump", action="store_true",
+                    help="Dump and analyze process memory")
 args = parser.parse_args()
 
-options = []
+options = {}
+
 if args.tor:
-    options.append("tor=yes")
+    options['tor'] = 'yes'
+if args.procmemdump:
+    options['procmemdump'] = 'yes'
+
+options = ",".join(list(map(lambda option: "{0}={1}".format(option, options[option]), options.keys())))
+
+if args.options:
+    options += args.options
 
 existing_tasks = cuckoo.find_tasks(args.hash)
 if len(existing_tasks) > 0:
