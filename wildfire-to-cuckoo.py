@@ -1,9 +1,20 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""Downloads a sample from Palo Alto Network's Wildfire service and sends it to Cuckoo
+"""Downloads a sample from Palo Alto Network's Wildfire service and sends it to Cuckoo.
+Requires [pyldfire](https://github.com/seanthegeek/pyldfire)."""
 
-Copyright 2016 Sean Whalen
+from builtins import input
+from argparse import ArgumentParser
+from io import BytesIO
+from distutils.util import strtobool
+from time import sleep
+
+from pyldfire import WildFire
+from cuckoo import Cuckoo
+
+__version__ = "1.0.0"
+__license__ = """Copyright 2016 Sean Whalen
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -15,23 +26,13 @@ Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
-limitations under the License.
-"""
-
-from builtins import input
-from argparse import ArgumentParser
-from io import BytesIO
-from distutils.util import strtobool
-from time import sleep
-
-from pyldfire import WildFire
-from cuckoo import Cuckoo
+limitations under the License."""
 
 wildfire = WildFire("api-key-goes-here")
 cuckoo = Cuckoo("https://cuckoo.example.net/", "username", "password")
 
-parser = ArgumentParser(description=__doc__)
-parser.add_argument("hash", help="A MD5 or SHA256 hash of a sample")
+parser = ArgumentParser(description=__doc__, version=__version__)
+parser.add_argument("hash", help="A MD5, SHA1 or SHA256 hash of a sample")
 parser.add_argument("filename", nargs="?", help="The filename of the sample")
 parser.add_argument("--tags",
                     help="Comma separated tags for selecting an analysis VM",

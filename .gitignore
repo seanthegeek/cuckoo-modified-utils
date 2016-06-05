@@ -63,3 +63,6 @@ target/
 
 # PyCharm project files
 .idea/
+
+# Upstream files
+pyldfire.py

@@ -1,22 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""Downloads a file via TOR, and sends it to Cuckoo
-
-Copyright 2016 Sean Whalen
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-"""
+"""Downloads a file via Tor, through a privoxy chain, and sends it to Cuckoo"""
 from builtins import input
 from argparse import ArgumentParser
 from distutils.util import strtobool
@@ -28,10 +13,25 @@ from requests import get
 from cuckoo import Cuckoo, get_file_hash
 
 __version__ = "1.0.0"
+__license__ = """Copyright 2016 Sean Whalen
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License."""
 
 cuckoo = Cuckoo("https://cuckoo.example.net", "username", "password")
+default_user_agent = "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/4.0; InfoPath.2; " \
+                     ".NET CLR 2.0.50727; WOW64)"
 
-parser = ArgumentParser(description=__doc__)
+parser = ArgumentParser(description=__doc__, version=__version__)
 parser.add_argument("URL", help="URL of the sample")
 parser.add_argument("--tags",
                     help="Comma separated tags for selecting an analysis VM",
@@ -43,9 +43,8 @@ parser.add_argument("--tor", action="store_true",
                     help="Enable Tor during analysis")
 parser.add_argument("--procmemdump", action="store_true",
                     help="Dump and analyze process memory")
-parser.add_argument("--user-agent", help="The user agent to spoof",
-                    default="Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/4.0; InfoPath.2; "
-                            ".NET CLR 2.0.50727; WOW64)")
+parser.add_argument("--user-agent", help="The user agent to spoof. Default: {0}".format(default_user_agent),
+                    default=default_user_agent)
 
 args = parser.parse_args()
 
