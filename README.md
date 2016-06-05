@@ -7,7 +7,7 @@ Useful scripts for [Brad Spengler's fork of Cuckoo](https://github.com/spender-s
 `wildfire-to-cuckoo.py` only)
 - `cuckoo.py` - A basic module for interacting with the Cuckoo API (included in this repository)
 
-## Command-line scripts
+## Command line scripts
 
 Each one of these scripts will submit one or more samples to a Cuckoo sandbox, and track the task as the sample is
 being analyzed. When submitting individual files, the scripts will check for existing reports, and notify you of any
