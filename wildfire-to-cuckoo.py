@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""Downloads a sample from Palo Alto Network's Wildfire service and sends it to Cuckoo.
-Requires [pyldfire](https://github.com/seanthegeek/pyldfire)."""
+"""Downloads a sample from Palo Alto Network's Wildfire service and sends it to
+Cuckoo. Requires pyldfire - https://github.com/seanthegeek/pyldfire"""
 
 from builtins import input
 from argparse import ArgumentParser

@@ -60,7 +60,7 @@ before submitting a new task.
                                  hash [filename]
     
     Downloads a sample from Palo Alto Network's Wildfire service and sends it to
-    Cuckoo. Requires [pyldfire](https://github.com/seanthegeek/pyldfire).
+    Cuckoo. Requires pyldfire - https://github.com/seanthegeek/pyldfire
     
     positional arguments:
       hash               A MD5, SHA1 or SHA256 hash of a sample
