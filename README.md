@@ -15,8 +15,8 @@ They currently have not been merged.
 ## Command line scripts
 
 Each one of these scripts will submit one or more samples to a Cuckoo sandbox, and track the task as the sample is
-being analyzed. When submitting individual files, the scripts will check for existing reports, and notify you of any
-before submitting a new task.
+being analyzed. When submitting individual files, the scripts will notify you of any existing reports before submitting
+a new task.
 
     usage: submit-to-cuckoo.py [-h] [-v] [--tags TAGS] [--options OPTIONS] [--tor]
                                [--procmemdump]
