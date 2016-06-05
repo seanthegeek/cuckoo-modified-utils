@@ -63,7 +63,7 @@ before submitting a new task.
     Cuckoo. Requires pyldfire - https://github.com/seanthegeek/pyldfire
     
     positional arguments:
-      hash               A MD5, SHA1 or SHA256 hash of a sample
+      hash               A MD5, SHA1, or SHA256 hash of a sample
       filename           The filename of the sample
     
     optional arguments:
@@ -72,4 +72,5 @@ before submitting a new task.
       --tags TAGS        Comma separated tags for selecting an analysis VM
       --options OPTIONS  Comma separated option=value pairs
       --tor              Enable Tor during analysis
-      --procmemdump      Dump and analyze process memory.
+      --procmemdump      Dump and analyze process memory
+ 

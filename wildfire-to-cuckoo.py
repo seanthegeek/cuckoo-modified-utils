@@ -32,7 +32,7 @@ wildfire = WildFire("api-key-goes-here")
 cuckoo = Cuckoo("https://cuckoo.example.net/", "username", "password")
 
 parser = ArgumentParser(description=__doc__, version=__version__)
-parser.add_argument("hash", help="A MD5, SHA1 or SHA256 hash of a sample")
+parser.add_argument("hash", help="A MD5, SHA1, or SHA256 hash of a sample")
 parser.add_argument("filename", nargs="?", help="The filename of the sample")
 parser.add_argument("--tags",
                     help="Comma separated tags for selecting an analysis VM",
