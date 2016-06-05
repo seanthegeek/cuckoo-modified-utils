@@ -59,6 +59,8 @@ if args.procmemdump:
 options = ",".join(list(map(lambda option: "{0}={1}".format(option, options[option]), options.keys())))
 
 if args.options:
+    if len(options) > 0:
+        options += ","
     options += args.options
 
 proxies = {"http": "http://localhost:8118",

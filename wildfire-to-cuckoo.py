@@ -55,6 +55,8 @@ if args.procmemdump:
 options = ",".join(list(map(lambda option: "{0}={1}".format(option, options[option]), options.keys())))
 
 if args.options:
+    if len(options) > 0:
+        options += ","
     options += args.options
 
 existing_tasks = cuckoo.find_tasks(args.hash)
@@ -74,7 +76,6 @@ results = cuckoo.submit_file((args.filename or args.hash),
                              temp_file.getvalue(),
                              tags=args.tags,
                              options=",".join(options))
-
 tasks = {}
 
 task_ids = results['task_ids']

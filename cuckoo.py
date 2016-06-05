@@ -58,13 +58,14 @@ class Cuckoo(object):
             if results["error"]:
                 raise RuntimeError(results["error_value"])
 
-    def __init__(self, cuckoo_root, username=None, password=None, verify=False):
+    def __init__(self, cuckoo_root, username=None, password=None, verify=False, proxies=None):
         self.root = cuckoo_root
         self.api_root = "{0}/api".format(self.root)
         self.username = username
         self.password = password
         self.session = session()
         self.session.verify = verify
+        self.session.proxies = proxies
         self.session.hooks = dict(response=self.raise_errors)
         if username or password:
             self.session.auth = (self.username, self.password)
@@ -73,9 +74,7 @@ class Cuckoo(object):
         if tags is None:
             tags = ""
         if options is None:
-            options = "procmemdump=yes"
-        else:
-            options = "process_memory=yes,{0}".format(options)
+            options = ""
 
         url = "{0}{1}".format(self.api_root, "/tasks/create/file/")
         data = dict(tags=tags, options=options)

@@ -58,6 +58,8 @@ if args.procmemdump:
 options = ",".join(list(map(lambda option: "{0}={1}".format(option, options[option]), options.keys())))
 
 if args.options:
+    if len(options) > 0:
+        options += ","
     options += args.options
 
 url = len(args.sample) == 1 and args.sample[0].lower().startswith("http")
