@@ -8,7 +8,7 @@ These scripts require changes to the Cuckoo API that were proposed in
 They currently have not been merged.
 
 - [`requests`](https://pypi.python.org/pypi/requests/) - HTTP for humans
-- [`pyldfire`](https://github.com/seanthegeek/pyldfire) - A python module for the Wildfire API (required for
+- [`pyldfire`](https://pypi.python.org/pypi/pyldfire/) - A python module for the Wildfire API (required for
 `wildfire-to-cuckoo.py` only)
 - `cuckoo.py` - A basic module for interacting with the Cuckoo API (included in this repository)
 
