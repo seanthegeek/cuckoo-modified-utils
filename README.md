@@ -4,7 +4,7 @@ Useful scripts for [Brad Spengler's fork of Cuckoo](https://github.com/spender-s
 ## Requirements
 
 These scripts require changes to the Cuckoo API that were proposed in 
-[PR #160](https://github.com/spender-sandbox/cuckoo-modified/pull/160).
+[PR #173](https://github.com/spender-sandbox/cuckoo-modified/pull/173).
 They currently have not been merged.
 
 - [`requests`](https://pypi.python.org/pypi/requests/) - HTTP for humans
