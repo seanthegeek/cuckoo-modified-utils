@@ -3,10 +3,6 @@ Useful scripts for [Brad Spengler's fork of Cuckoo](https://github.com/spender-s
 
 ## Requirements
 
-These scripts require changes to the Cuckoo API that were proposed in 
-[PR #173](https://github.com/spender-sandbox/cuckoo-modified/pull/173).
-They currently have not been merged.
-
 - [`requests`](https://pypi.python.org/pypi/requests/) - HTTP for humans
 - [`pyldfire`](https://pypi.python.org/pypi/pyldfire/) - A python module for the Wildfire API (required for
 `wildfire-to-cuckoo.py` only)
