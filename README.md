@@ -14,6 +14,8 @@ Each one of these scripts will submit one or more samples to a Cuckoo sandbox, a
 being analyzed. When submitting individual files, the scripts will notify you of any existing reports before submitting
 a new task.
 
+You'll need to edit each of these scripts to set the Cuckoo hostname, username, and password. There are also options for proxies and SSL certificate verification.
+
     usage: submit-to-cuckoo.py [-h] [-v] [--tags TAGS] [--options OPTIONS] [--tor]
                                [--procmemdump]
                                sample [sample ...]
