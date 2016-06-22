@@ -13,7 +13,7 @@ from time import sleep
 from pyldfire import WildFire
 from cuckoo import Cuckoo
 
-__version__ = "1.0.0"
+__version__ = "1.0.1"
 __license__ = """Copyright 2016 Sean Whalen
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -79,9 +79,7 @@ results = cuckoo.submit_file((args.filename or args.hash),
                              options=",".join(options))
 tasks = {}
 
-task_ids = results['task_ids']
-
-for task_id in task_ids:
+for task_id in results:
     tasks[task_id] = dict(previous_state=None, current_state=None)
 
 while (len(tasks)) > 0:
