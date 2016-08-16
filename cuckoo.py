@@ -196,7 +196,7 @@ class Cuckoo(object):
 
     def view_file(self, file_hash):
         hash_type = get_hash_type(file_hash)
-        return self.session.get("{}0/files/view/{1/{2}}".format(self.api_root, hash_type, file_hash).json())
+        return self.session.get("{0}/files/view/{1/{2}}".format(self.api_root, hash_type, file_hash).json())
 
     def get_file(self, file_hash):
         hash_type = get_hash_type(file_hash)
