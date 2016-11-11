@@ -22,7 +22,7 @@ from re import match
 from requests import session
 from io import BytesIO
 
-__version__ = "1.0.1"
+__version__ = "1.0.2"
 
 hash_types = {"md5": md5, "sha1": sha1, "sha256": sha256}
 hash_regex = {r'[a-fA-F\d]{32}': "md5", r"[a-fA-F\d]{40}": "sha1", r"[a-fA-F\d]{64}": "sha256"}
@@ -166,7 +166,7 @@ class Cuckoo(object):
             url += "/detailed/"
         return self.session.get(url).json()['data']
 
-    def get_task_axcreenshots(self, task_id, screenshot_id=None):
+    def get_task_screenshots(self, task_id, screenshot_id=None):
         url = "{0}/tasks/get/screenshot/{1}/".format(self.api_root, task_id)
         if screenshot_id:
             url += "{0}/".format(screenshot_id)
