@@ -15,8 +15,8 @@ from setuptools import setup
 from codecs import open
 from os import path
 
-from easyad import __version__
-from easyad import __doc__ as description
+from cuckooutils import __version__
+from cuckooutils import __doc__ as description
 
 here = path.abspath(path.dirname(__file__))
 
@@ -25,7 +25,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='easyad',
+    name='cuckoomodifiedutils',
 
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
@@ -36,7 +36,7 @@ setup(
     long_description=long_description,
 
     # The project's main homepage.
-    url='https://github.com/seanthegeek/easyad',
+    url='https://github.com/seanthegeek/cuckoo-modified-utils',
 
     # Author details
     author='Sean Whalen',
@@ -84,11 +84,11 @@ setup(
 
     # Alternatively, if you want to distribute just a my_module.py, uncomment
     # this:
-    py_modules=["easyad"],
+    py_modules=["cuckoo"],
 
     # List run-time dependencies here.  These will be installed by pip when
     # your project is installed. For an analysis of "install_requires" vs pip's
     # requirements files see:
     # https://packaging.python.org/en/latest/requirements.html
-    install_requires=['pyldap'],
+    install_requires=['requests'],
 )

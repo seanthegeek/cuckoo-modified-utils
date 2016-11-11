@@ -11,7 +11,7 @@ from distutils.util import strtobool
 from time import sleep
 
 from pyldfire import WildFire
-from cuckoo import Cuckoo
+from cuckooutils import Cuckoo
 
 __version__ = "1.0.1"
 __license__ = """Copyright 2016 Sean Whalen

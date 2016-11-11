@@ -12,7 +12,7 @@ from glob import glob
 from zipfile import ZipFile
 from os.path import basename
 
-from cuckoo import Cuckoo, get_file_hash
+from cuckooutils import Cuckoo, get_file_hash
 
 __version__ = "1.0.0"
 __license = """Copyright 2016 Sean Whalen

@@ -10,7 +10,7 @@ from time import sleep
 
 from requests import get
 
-from cuckoo import Cuckoo, get_file_hash
+from cuckooutils import Cuckoo, get_file_hash
 
 __version__ = "1.0.0"
 __license__ = """Copyright 2016 Sean Whalen
@@ -83,7 +83,7 @@ if len(existing_tasks) > 0:
     for task_id in existing_tasks:
         print("{0}/analysis/{1}".format(cuckoo.root, task_id))
     try:
-        resubmit = strtobool(input("Would you like to resubmit it? (/y/N)").lower())
+        resubmit = strtobool(input("Would you like to resubmit it? (y/N)").lower())
     except ValueError:
         exit()
     if not resubmit:
